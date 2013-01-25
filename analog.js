@@ -2,7 +2,7 @@
  * Copyright 2013 Amir Grozki
  * Released under the MIT license
  *
- * Date: 2013-1-14
+ * Date: 2013-1-25
  */
 
 ;(function (name, ns, definition, $) {
