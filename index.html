@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Analog Stick</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <link rel="stylesheet" href="analog.css" />
+</head>
+<body>
+    <div id="container">
+        <h1>Analog Stick</h1>
+        <h2>Drag me</h2>
+        <div id="analog" class="analog"></div>
+        <p id="vector"></p>
+    </div>
+    <script src="zepto.min.js"></script>
+    <script src="analog.js"></script>
+    <script>
+        $(function () {
+            var analog = new AnalogStick('#analog'),
+                v = $('#vector');
+
+            $(document).on('mousemove touchmove', function (e) {
+                var vector = analog.getVector();
+
+                v.html(vector[0].toFixed(3) + ', ' + vector[1].toFixed(3));
+            });
+        });
+    </script>
+</body>
+</html>

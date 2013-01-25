@@ -1,4 +1,9 @@
-﻿.analog {
+﻿body {
+    font-family: 'Trebuchet MS', Calibri, sans-serif;
+    padding-top: 100px;
+    text-align: center;
+}
+.analog {
     width: 100px;
     height: 100px;
     margin: 0 auto;
