@@ -23,75 +23,74 @@
     }
 })('AnalogStick', undefined, function($) {
     
-    var module = this,
-        opts,
-        //cos = Math.cos,
-        //sin = Math.sin,
-        capture = false,
-        offset = [0, 0],
-        vector = [0, 0],
-        center,
-        el,
-        stickDom,
-        transformOriginProp = prefix('transformOrigin'),
-        transformProp = prefix('transform');
+    var module = this;
 
     /*var matrix3d = function(a1, b1, c1, d1, a2, b2, c2, d2, a3, b3, c3, d3, tx, ty, tz, d4) {
         return 'matrix3d(' + [].slice.call(arguments).join(',') + ')';
     };*/
 
-    function prefix(style) {
-        var vendors = ['ms', 'Moz', 'webkit', 'o'],
-            tmp = document.createElement("div");
+    var AnalogStick = function (selector, options) {
 
-        if (tmp.style[style]) {
-            return style;
-        }
+        var opts = this.options = $.extend({}, this.defaults, options),
+            //cos = Math.cos,
+            //sin = Math.sin,
+            capture = false,
+            offset = [0, 0],
+            vector = [0, 0],
+            center,
+            el,
+            stickDom,
+            transformOriginProp = prefix('transformOrigin'),
+            transformProp = prefix('transform');
 
-        style = style.charAt(0).toUpperCase() + style.slice(1);
+        function prefix(style) {
+            var vendors = ['ms', 'Moz', 'webkit', 'o'],
+                tmp = document.createElement("div");
 
-        for (var x = 0; x < vendors.length; ++x) {
-            if (typeof tmp.style[vendors[x] + style] != 'undefined') {
-                return vendors[x] + style;
+            if (tmp.style[style]) {
+                return style;
+            }
+
+            style = style.charAt(0).toUpperCase() + style.slice(1);
+
+            for (var x = 0; x < vendors.length; ++x) {
+                if (typeof tmp.style[vendors[x] + style] != 'undefined') {
+                    return vendors[x] + style;
+                }
             }
         }
-    }
 
-    function resetStick() {
-        offset = [0, 0];
-        vector = [0, 0];
-        stickDom.style[transformProp] = '';
-    }
+        function resetStick() {
+            offset = [0, 0];
+            vector = [0, 0];
+            stickDom.style[transformProp] = '';
+        }
 
-    function initStick() {
-        var stick, stickWidth, stickHeight, stickOffset;
+        function initStick() {
+            var stick, stickWidth, stickHeight, stickOffset;
 
-        stick = $('<div class="stick"/>');
+            stick = $('<div class="stick"/>');
 
-        stickDom = stick[0];
-        stickDom.style[transformOriginProp] = '50% 50% 0';
+            stickDom = stick[0];
+            stickDom.style[transformOriginProp] = '50% 50% 0';
 
-        stickWidth  = (el.width()   || opts.defaultSize) * opts.relativeSize;
-        stickHeight = (el.height()  || opts.defaultSize) * opts.relativeSize;
+            stickWidth = (el.width() || opts.defaultSize) * opts.relativeSize;
+            stickHeight = (el.height() || opts.defaultSize) * opts.relativeSize;
 
-        stick.css({
-            width:  stickWidth,
-            height: stickHeight,
-            left:   (el.width() - stickWidth) / 2,
-            top:    (el.height() - stickHeight) / 2,
-            position: 'absolute',
-        });
+            stick.css({
+                width: stickWidth,
+                height: stickHeight,
+                left: (el.width() - stickWidth) / 2,
+                top: (el.height() - stickHeight) / 2,
+                position: 'absolute',
+            });
 
-        el.append(stick);
+            el.append(stick);
 
-        stickOffset = stick.offset();
+            stickOffset = stick.offset();
 
-        center = [ stickOffset.left + stickWidth / 2, stickOffset.top + stickHeight / 2 ];
-    }
-
-    var AnalogStick = function(selector, options) {
-
-        opts = $.extend({}, this.defaults, options);
+            center = [stickOffset.left + stickWidth / 2, stickOffset.top + stickHeight / 2];
+        }
 
         el = $(selector)
             .css('position', 'relative');
@@ -151,7 +150,6 @@
             e.preventDefault();
             capture = true;
         });
-            
     };
 
     AnalogStick.prototype = {
