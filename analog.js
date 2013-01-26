@@ -32,11 +32,9 @@
     var AnalogStick = function (selector, options) {
 
         var opts = this.options = $.extend({}, this.defaults, options),
-            //cos = Math.cos,
-            //sin = Math.sin,
-            capture = false,
+            vector = this.vector = [0, 0],
             offset = [0, 0],
-            vector = [0, 0],
+            capture = false,
             center,
             el,
             stickDom,
@@ -160,7 +158,7 @@
             stickAngle: 30
         },
         getVector: function() {
-            return vector;
+            return this.vector;
         }
     };
 
