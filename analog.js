@@ -60,7 +60,7 @@
 
         function resetStick() {
             offset = [0, 0];
-            vector = [0, 0];
+            vector = this.vector = [0, 0];
             stickDom.style[transformProp] = '';
         }
 
@@ -122,7 +122,7 @@
                     dy = Math.sin(angle);
 
                     offset = [dx * distance, dy * distance];
-                    vector = [dx * magnitude, -dy * magnitude];
+                    vector = this.vector = [dx * magnitude, -dy * magnitude];
 
                     stickDom.style[transformProp] = 'rotateX(' + -dy * magnitude * a + 'deg) rotateY(' + dx * magnitude * a + 'deg) translate3d(' + offset[0] + 'px, ' + offset[1] + 'px, 0)';
                     /*matrix3d(cos(a*dx),
