@@ -5,7 +5,7 @@
  * Date: 2013-1-25
  */
 
-;(function (name, ns, definition, $) {
+; (function (name, ns, definition, $) {
     var theModule = definition($),
         // this is considered "safe":
         hasDefine = typeof define === 'function' && define.amd,
@@ -21,8 +21,8 @@
     } else {
         this[name] = theModule;
     }
-})('AnalogStick', undefined, function($) {
-    
+})('AnalogStick', undefined, function ($) {
+
     var module = this;
 
     /*var matrix3d = function(a1, b1, c1, d1, a2, b2, c2, d2, a3, b3, c3, d3, tx, ty, tz, d4) {
@@ -32,11 +32,9 @@
     var AnalogStick = function (selector, options) {
 
         var opts = this.options = $.extend({}, this.defaults, options),
-            //cos = Math.cos,
-            //sin = Math.sin,
-            capture = false,
+            vector = this.vector = [0, 0],
             offset = [0, 0],
-            vector = [0, 0],
+            capture = false,
             center,
             el,
             stickDom,
@@ -98,16 +96,16 @@
         initStick();
 
         resetStick();
-        
+
         $(document)
-            .on('mouseup touchend', function(e) {
+            .on('mouseup touchend', function (e) {
                 e.preventDefault();
-                
+
                 capture = false;
-                
+
                 resetStick();
             })
-            .on('mousemove touchmove', function(e) {
+            .on('mousemove touchmove', function (e) {
                 if (e.changedTouches) {
                     e = e.changedTouches[0];
                 }
@@ -115,7 +113,7 @@
                 if (capture) {
                     var dx = e.pageX - center[0],
                         dy = e.pageY - center[1],
-                        distance = Math.min(Math.sqrt(dx*dx + dy*dy), opts.movementRadius),
+                        distance = Math.min(Math.sqrt(dx * dx + dy * dy), opts.movementRadius),
                         magnitude = distance / opts.movementRadius,
                         angle = Math.atan2(dy, dx),
                         a = opts.stickAngle;
@@ -146,7 +144,7 @@
                 }
             });
 
-        el.on('mousedown touchstart', function(e) {
+        el.on('mousedown touchstart', function (e) {
             e.preventDefault();
             capture = true;
         });
@@ -159,8 +157,8 @@
             movementRadius: 25,
             stickAngle: 30
         },
-        getVector: function() {
-            return vector;
+        getVector: function () {
+            return this.vector;
         }
     };
 
