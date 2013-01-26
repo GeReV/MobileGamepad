@@ -32,7 +32,7 @@
     var AnalogStick = function (selector, options) {
 
         var opts = this.options = $.extend({}, this.defaults, options),
-            vector = this.vector = [0, 0],
+            vector = [0, 0],
             offset = [0, 0],
             capture = false,
             center,
@@ -40,6 +40,10 @@
             stickDom,
             transformOriginProp = prefix('transformOrigin'),
             transformProp = prefix('transform');
+
+        this.getVector = function () {
+            return vector;
+        };
 
         function prefix(style) {
             var vendors = ['ms', 'Moz', 'webkit', 'o'],
@@ -60,7 +64,7 @@
 
         function resetStick() {
             offset = [0, 0];
-            vector = this.vector = [0, 0];
+            vector = [0, 0];
             stickDom.style[transformProp] = '';
         }
 
@@ -115,16 +119,15 @@
                         dy = e.pageY - center[1],
                         distance = Math.min(Math.sqrt(dx * dx + dy * dy), opts.movementRadius),
                         magnitude = distance / opts.movementRadius,
-                        angle = Math.atan2(dy, dx),
-                        a = opts.stickAngle;
+                        angle = Math.atan2(dy, dx);
 
                     dx = Math.cos(angle);
                     dy = Math.sin(angle);
 
                     offset = [dx * distance, dy * distance];
-                    vector = this.vector = [dx * magnitude, -dy * magnitude];
+                    vector = [dx * magnitude, -dy * magnitude];
 
-                    stickDom.style[transformProp] = 'rotateX(' + -dy * magnitude * a + 'deg) rotateY(' + dx * magnitude * a + 'deg) translate3d(' + offset[0] + 'px, ' + offset[1] + 'px, 0)';
+                    stickDom.style[transformProp] = 'rotateX(' + -dy * magnitude * opts.stickAngle + 'deg) rotateY(' + dx * magnitude * opts.stickAngle + 'deg) translate3d(' + offset[0] + 'px, ' + offset[1] + 'px, 0)';
                     /*matrix3d(cos(a*dx),
                         sin(a*dy)*sin(a*dx),
                         cos(a*dx)*sin(a*dy),
@@ -156,9 +159,6 @@
             relativeSize: 0.8,
             movementRadius: 25,
             stickAngle: 30
-        },
-        getVector: function () {
-            return this.vector;
         }
     };
 
