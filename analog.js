@@ -5,7 +5,7 @@
  * Date: 2013-1-25
  */
 
-;(function (name, ns, definition, $) {
+; (function (name, ns, definition, $) {
     var theModule = definition($),
         // this is considered "safe":
         hasDefine = typeof define === 'function' && define.amd,
@@ -21,8 +21,8 @@
     } else {
         this[name] = theModule;
     }
-})('AnalogStick', undefined, function($) {
-    
+})('AnalogStick', undefined, function ($) {
+
     var module = this;
 
     /*var matrix3d = function(a1, b1, c1, d1, a2, b2, c2, d2, a3, b3, c3, d3, tx, ty, tz, d4) {
@@ -60,7 +60,7 @@
 
         function resetStick() {
             offset = [0, 0];
-            vector = [0, 0];
+            vector = this.vector = [0, 0];
             stickDom.style[transformProp] = '';
         }
 
@@ -96,16 +96,16 @@
         initStick();
 
         resetStick();
-        
+
         $(document)
-            .on('mouseup touchend', function(e) {
+            .on('mouseup touchend', function (e) {
                 e.preventDefault();
-                
+
                 capture = false;
-                
+
                 resetStick();
             })
-            .on('mousemove touchmove', function(e) {
+            .on('mousemove touchmove', function (e) {
                 if (e.changedTouches) {
                     e = e.changedTouches[0];
                 }
@@ -113,7 +113,7 @@
                 if (capture) {
                     var dx = e.pageX - center[0],
                         dy = e.pageY - center[1],
-                        distance = Math.min(Math.sqrt(dx*dx + dy*dy), opts.movementRadius),
+                        distance = Math.min(Math.sqrt(dx * dx + dy * dy), opts.movementRadius),
                         magnitude = distance / opts.movementRadius,
                         angle = Math.atan2(dy, dx),
                         a = opts.stickAngle;
@@ -122,7 +122,7 @@
                     dy = Math.sin(angle);
 
                     offset = [dx * distance, dy * distance];
-                    vector = [dx * magnitude, -dy * magnitude];
+                    vector = this.vector = [dx * magnitude, -dy * magnitude];
 
                     stickDom.style[transformProp] = 'rotateX(' + -dy * magnitude * a + 'deg) rotateY(' + dx * magnitude * a + 'deg) translate3d(' + offset[0] + 'px, ' + offset[1] + 'px, 0)';
                     /*matrix3d(cos(a*dx),
@@ -144,7 +144,7 @@
                 }
             });
 
-        el.on('mousedown touchstart', function(e) {
+        el.on('mousedown touchstart', function (e) {
             e.preventDefault();
             capture = true;
         });
@@ -157,7 +157,7 @@
             movementRadius: 25,
             stickAngle: 30
         },
-        getVector: function() {
+        getVector: function () {
             return this.vector;
         }
     };
