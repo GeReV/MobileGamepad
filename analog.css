@@ -26,3 +26,43 @@
     box-shadow: rgba(0, 0, 0, 0.15) 8px 8px 10px;
 
 }
+
+.button {
+  font-family: "Krona One", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: rgba(219,87,5,1);
+  background-image: -moz-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.25) 20%, rgba(0,0,0,0.1) 100%); /* FF3.6+ */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,255,255,0.25)), color-stop(20%,rgba(255,255,255,0.25)), color-stop(100%,rgba(0,0,0,0.1))); /* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.25) 20%,rgba(0,0,0,0.1) 100%); /* Chrome10+,Safari5.1+ */
+  background-image: -o-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.25) 20%,rgba(0,0,0,0.1) 100%); /* Opera 11.10+ */
+  background-image: -ms-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.25) 20%,rgba(0,0,0,0.1) 100%); /* IE10+ */
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.25) 20%,rgba(0,0,0,0.1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26ffffff', endColorstr='#26000000',GradientType=0 ); /* IE6-9 */
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,.25) inset, 0px 4px 0px rgba(163,62,4,1), 0px 9px 20px rgba(0,0,0,.5), 0px 3px 1px -1px rgba(255,255,255,.8) inset;
+  color: rgba(219,87,5,1);
+  text-shadow: 0 1px 0px rgba(255, 255, 255, 0.4), 0 -1px 0px rgba(0, 0, 0, 0.4);
+  display: block;
+  outline: 0;
+  padding: 7px 6px 4px 5px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 20px;
+  height: 20px;
+  
+  /*-webkit-transition: all .1s ease;
+  -moz-transition: all .1s ease;
+  -ms-transition: all .1s ease;
+  -o-transition: all .1s ease;*/
+  transition: all .1s ease;
+}
+
+.button:active {
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,.25) inset, 0px 2px 0px rgba(163,62,4,1), 0px 3px 6px rgba(0,0,0,.7), 0px 3px 1px -1px rgba(255,255,255,.8) inset;
+    -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    transform: translateY(2px);
+    
+}
