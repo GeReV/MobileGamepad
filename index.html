@@ -10,23 +10,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <link href='http://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="analog.css" />
+    <link rel="stylesheet" href="index.css" />
 </head>
 <body>
     <div id="container">
-        <h1>Analog Stick</h1>
-        <h2>Drag me</h2>
-        <a href="javascript:void(0);" class="button">X</a>
-        <a href="javascript:void(0);" class="button">Y</a>
-        <a href="javascript:void(0);" class="button">Z</a>
-        <div id="analog" class="analog"></div>
-        <p id="vector"></p>
+      <div class="remote">
+        <div class="buttons">
+          <a href="javascript:void(0);" class="button-y">Y</a>
+          <a href="javascript:void(0);" class="button-x">X</a>
+          <a href="javascript:void(0);" class="button-b">B</a>
+          <a href="javascript:void(0);" class="button-a">A</a>
+        </div>
+        <div class="analog"></div>
+      </div>
+      <p id="vector"></p>
     </div>
     <script src="zepto.min.js"></script>
     <script src="analog.js"></script>
     <script>
         $(function () {
-            var analog = new AnalogStick('#analog'),
+            var analog = new AnalogStick('.analog'),
                 v = $('#vector');
 
             $(document).on('mousemove touchmove', function (e) {
