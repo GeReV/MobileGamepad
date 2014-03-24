@@ -1,0 +1,27 @@
+{
+  "name": "MobileGamepad",
+  "version": "0.1.1",
+  "description": "ERROR: No README.md file found!",
+  "main": "analog.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GeReV/MobileGamepad.git"
+  },
+  "keywords": [
+    "mobile",
+    "touch",
+    "gamepad"
+  ],
+  "author": "Amir Grozki",
+  "license": "BSD",
+  "gitHead": "cc1dbafb5f68db48f3509441ca36ce70ec39734a",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-compass": "^0.7.2"
+  }
+}
